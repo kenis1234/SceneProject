@@ -13,7 +13,7 @@ public class Ray {
 
     /************** Getters/Setters *******/
     public Vector getDirection() {
-        return direction;
+        return new Vector(direction);
     }
 
     public void setDirection(Vector direction) {

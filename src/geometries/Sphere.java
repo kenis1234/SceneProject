@@ -41,7 +41,13 @@ public class Sphere extends RadialGeometry  implements Geometry, Intersectable{
 
         if(d <= this.getRadius())
             return list;
-        return null;
-
+        double th= pow((getRadius()*getRadius()-d*d),0.5);
+        double t1=tm-th;
+        double t2=tm+th;
+        Point3D p1= ray.getHead().add(ray.getDirection().mult(t1));
+        Point3D p2= ray.getHead().add(ray.getDirection().mult(t2));
+        list.add(p1);
+        list.add(p2);
+        return list;
     }
 }

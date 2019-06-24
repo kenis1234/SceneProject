@@ -73,6 +73,13 @@ public class Point3D extends Point2D {
             return new Point3D(x,y,z);
     }
 
+    public Point3D add(Vector point3D) {
+        Coordinate z=( coordinate_z.add(point3D.getHead().getCoordinate_z()));
+        Coordinate y=( getCoordinate_y().add(point3D.getHead().getCoordinate_y()));
+        Coordinate x=( getCoordinate_x().add(point3D.getHead().getCoordinate_x()));
+        return new Point3D(x,y,z);
+    }
+
     public double distance (Point3D other){
         return (this.sub(other)).size();
 

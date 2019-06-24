@@ -1,4 +1,4 @@
-package unitTests;
+/*package unitTests;
 
 import geometries.Cylinder;
 import org.junit.jupiter.api.Test;
@@ -16,4 +16,4 @@ class CylinderTests {
         Vector v1=cylinder.getNormal(new Point3D(0,5,1));
         assertEquals("Vector{head=Point3D{x=0.0, y=1.0, z=0.0}}",v1.toString());
     }
-}
+}*/
