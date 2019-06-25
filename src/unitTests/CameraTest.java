@@ -33,6 +33,20 @@ import primitives.*;
 public class CameraTest {
     /*** Camera test ***/
     @Test
+    public void func()
+    {
+        Camera c=new Camera();
+        Ray ray=c.constructRayThroughPixel(3,3,5,5,5,5,10);
+        assertEquals("the direction vector is: Vector{head=Point3D{x=0.0, y=0.0, z=-1.0}}the head is: Point3D{x=0.0, y=0.0, z=0.0}",ray.toString());
+    }
+    @Test
+    public void func1()
+    {
+        Camera c=new Camera();
+        Ray ray=c.constructRayThroughPixel(1,1,5,5,10,7,10);
+        assertEquals("the direction vector is: Vector{head=Point3D{x=0.20463518708865724, y=-0.21486694644309012, z=-0.9549642064137338}}the head is: Point3D{x=0.0, y=0.0, z=0.0}",ray.toString());
+    }
+    @Test
     public void testRaysConstruction(){
         final int WIDTH = 3;
         final int HEIGHT = 3;

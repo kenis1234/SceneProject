@@ -60,7 +60,7 @@ public class Render {
     private Color calcColor(GeoPoint geopoint) {
         Color color = scene.getAmbient().getIntensity(new Point3D(0, 0, 0));
         color = add(color, geopoint.geometry.getEmission());
-        Vector v = geopoint.point.sub(scene.getCamera().getLocation()).normalize();
+        Vector v = geopoint.point.sub(scene.getCamera().getP0()).normalize();
         Vector n = geopoint.geometry.getNormal(geopoint.point);
         int nShininess = geopoint.geometry.getMaterial().getnShininess();
         double kd = geopoint.geometry.getMaterial().getkD();
@@ -123,7 +123,7 @@ public class Render {
 
     private GeoPoint getClosestPoint(List<GeoPoint> points){
        double distance=Double.MAX_VALUE;
-       Point3D P0=scene.getCamera().getLocation();
+       Point3D P0=scene.getCamera().getP0();
         GeoPoint minDistancePoint=null;
 
        for(GeoPoint geoPoint: points)
