@@ -4,6 +4,7 @@ import geometries.Intersectable;
 
 import elements.Camera;
 import geometries.Intersectable;
+import geometries.Plane;
 import geometries.Triangle;
 import org.junit.jupiter.api.Test;
 import primitives.Point3D;
@@ -133,6 +134,17 @@ public class TriangleTest {
             for (Point3D iPoint: intersectionPointsTriangle2)
                 System.out.println(iPoint);
         }
+    @Test
+    void func1() {
+        Point3D x=new Point3D(-100,-100,-200);
+        Point3D y=new Point3D(100,-100,-200);
+        Point3D z=new Point3D(0,100,-200);
+        Triangle t=new Triangle(x,y,z);
+        Vector v=new Vector(0,-1,-3);
+        Point3D point3D=new Point3D(0,0,0);
+        Point3D point=t.findIntersections(new Ray(v,point3D)).get(0).point;
+        assertEquals(-66.6666, point.getCoordinate_y().get(),0.01);
+    }
 
 
 }
