@@ -55,6 +55,7 @@ public class Render {
         }
         return intersecrionsPoints;
     }
+    private static final double MIN_CALC_COLOR_K = 0.001;
 
     private Color calcColor(GeoPoint geopoint) {
         Color color = scene.getAmbient().getIntensity(new Point3D(0, 0, 0));

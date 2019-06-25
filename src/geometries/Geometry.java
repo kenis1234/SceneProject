@@ -17,6 +17,10 @@ public abstract class Geometry implements Intersectable {
         return material;
     }
 
+    public void setEmission(Color emission) {
+        this.emission = emission;
+    }
+
     Color emission;
     Material material;
 }
