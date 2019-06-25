@@ -1,24 +1,23 @@
 package elements;
 
-import primitives.Color;
+import java.awt.Color;
+import primitives.Point3D;
 
-public class AmbientLight {
-    private Color color;
+public class AmbientLight extends Light{
     private double ka;
-    private Color intensity;
 
 
     public AmbientLight(Color c, double k){
-        color=c;
+        super(c);
         ka=k;
-        intensity=GetIntensity();
     }
 
-    public Color getIntensity() {
-        return intensity;
-    }
 
-    private Color GetIntensity(){
-        return color.scale(ka);
+
+    public Color getIntensity(Point3D t){
+        double d=color.getRGB();
+        d*=ka;
+        int w=(int)d;
+        return new Color(w);
     }
 }

@@ -6,7 +6,7 @@ import primitives.Vector;
 
 import java.util.*;
 
-public class Plane implements Geometry {
+public class Plane extends Geometry {
     private Point3D point;
     private Vector plumb;
 
@@ -38,8 +38,8 @@ public class Plane implements Geometry {
     }
 
     @Override
-    public List<Point3D> findIntersections(Ray ray){
-        List<Point3D> list=new ArrayList<>();
+    public List<GeoPoint> findIntersections(Ray ray){
+        List<GeoPoint> list=new ArrayList<GeoPoint>();
         Vector n=new Vector(plumb);
         Point3D q0=point;
         Vector v=new Vector(ray.getDirection());
@@ -50,7 +50,7 @@ public class Plane implements Geometry {
         l.div(n.dotProduct(v));
         double t=(n.mult(-1)).dotProduct(l);
         Point3D p=p0.add(v.mult(t));
-        list.add(p);
+        list.add(new GeoPoint(this, p));
         return list;
     }
 }

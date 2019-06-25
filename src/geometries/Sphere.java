@@ -10,7 +10,7 @@ import java.util.List;
 
 import static java.lang.Math.pow;
 
-public class Sphere extends RadialGeometry  implements Geometry, Intersectable{
+public class Sphere extends RadialGeometry{
     private Point3D center;
 
     /********** Constructors ***********/
@@ -32,9 +32,9 @@ public class Sphere extends RadialGeometry  implements Geometry, Intersectable{
     }
 
     @Override
-    public List<Point3D> findIntersections(Ray ray)
+    public List<GeoPoint> findIntersections(Ray ray)
     {
-        List<Point3D> list=new ArrayList<Point3D>();
+        List<GeoPoint> list=new ArrayList<GeoPoint>();
         Vector L = center.sub(ray.getHead());
         double tm = L.dotProduct(ray.getDirection());
         double d = pow(L.dotProduct(L)+tm*tm,0.5);
@@ -46,8 +46,8 @@ public class Sphere extends RadialGeometry  implements Geometry, Intersectable{
         double t2=tm+th;
         Point3D p1= ray.getHead().add(ray.getDirection().mult(t1));
         Point3D p2= ray.getHead().add(ray.getDirection().mult(t2));
-        list.add(p1);
-        list.add(p2);
+        list.add(new GeoPoint(this,p1));
+        list.add(new GeoPoint(this,p2));
         return list;
     }
 }

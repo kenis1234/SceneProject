@@ -7,7 +7,7 @@ import primitives.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Triangle extends Plane implements Geometry{
+public class Triangle extends Plane {
 
     private Point3D point1;
     private Point3D point2;
@@ -49,7 +49,7 @@ public class Triangle extends Plane implements Geometry{
         return super.getNormal(point);
     }
     @Override
-    public List<Point3D> findIntersections(Ray ray){
+    public List<GeoPoint> findIntersections(Ray ray){
         Point3D t1=point1;
         Point3D t2=point2;
         Point3D t3=point3;
@@ -66,9 +66,9 @@ public class Triangle extends Plane implements Geometry{
         n2.div(n2.size());
         Vector n3=v32.crossProduct(v31);
         n3.div(n3.size());
-        List<Point3D> list=new ArrayList<Point3D>();
+        List<GeoPoint> list=new ArrayList<GeoPoint>();
         list=super.findIntersections(ray);
-        Point3D p=list.get(0);
+        Point3D p=list.get(0).point;
         double i1=(p.sub(p0)).dotProduct(n1);
         double i2=(p.sub(p0)).dotProduct(n2);
         double i3=(p.sub(p0)).dotProduct(n3);
@@ -77,6 +77,6 @@ public class Triangle extends Plane implements Geometry{
         boolean f3=sign(i3);
         if((f1&&f2&&f3)||!(f1||f2|f3))
             return list;
-        return new ArrayList<>();
+        return new ArrayList<GeoPoint>();
     }
 }

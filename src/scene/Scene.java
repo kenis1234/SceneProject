@@ -1,11 +1,14 @@
 package scene;
 import elements.AmbientLight;
 import elements.Camera;
+import elements.LightSource;
 import geometries.Geometries;
 import geometries.Geometry;
-import primitives.*;
+import java.awt.Color;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class Scene {
     private String name;
@@ -16,18 +19,21 @@ public class Scene {
     private double distance;
 
 
+
+    private List<LightSource> lights;
+
+
     public Scene(String name) {
         this.name = name;
         this.geometries = new Geometries();
+        this.lights=new ArrayList<LightSource>();
     }
 
 
     public String getName() {
         return new String(name);
     }
-    public Color getBackground() {
-        return new Color(background);
-    }
+    public Color getBackground() { return new Color(background.getRGB()); }
     public AmbientLight getAmbient() {
         return ambient;
     }
@@ -39,6 +45,9 @@ public class Scene {
     }
     public double getDistance() {
         return distance;
+    }
+    public List<LightSource> getLights() {
+        return lights;
     }
 
     public void setBackground(Color background) {
@@ -53,7 +62,10 @@ public class Scene {
     }
 
     public void addGeometry(Geometry g){
-        getGeometries().add(g);
+        geometries.add(g);
+    }
+    public void addLight(LightSource l){
+        lights.add(l);
     }
 
     public Iterator<Geometry> getGeometriesIterator(){
