@@ -78,7 +78,7 @@ public class Camera {
         System.out.println(tx);
         System.out.println(ty);
         Vector vx= getvRight().mult(tx);
-        Vector vy=getvUp().mult(ty*(-1));
+        Vector vy=new Vector(getvUp().mult(ty*(-1)));
         Point3D p=(pc.add(vx)).add(vy);
         Vector res=p.sub(p0);
         res.normalize();

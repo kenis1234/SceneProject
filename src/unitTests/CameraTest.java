@@ -59,8 +59,7 @@ public class CameraTest {
         {
             for (int j = 0; j < WIDTH; j++)
             {
-                Ray ray = camera.constructRayThroughPixel(
-                        WIDTH, HEIGHT, j, i, 1, 3 * WIDTH, 3 * HEIGHT);
+                Ray ray = camera.constructRayThroughPixel( i,j, WIDTH, HEIGHT, 3 * HEIGHT, 3 * WIDTH, 1);
                 screen[i][j] = ray.getHead();
                 System.out.print(screen[i][j]);
                 System.out.println(ray.getDirection());
