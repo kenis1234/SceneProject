@@ -84,16 +84,23 @@ public class Render {
         return intersections.isEmpty();
     }
 
-    private void printGrid(int interval)
+    public void printGrid(int interval)
     {
         Color white=new Color(255,255,255);
         int px=imageWriter.getNx();
         int py=imageWriter.getNy();
         for(int i=0;i<px;i+=interval)
         {
-            for (int j=0;j<py;j+=interval)
+            for (int j=0;j<py;j++)
             {
                 imageWriter.writePixel(i,j,white);
+            }
+        }
+        for(int i=0;i<py;i+=interval)
+        {
+            for (int j=0;j<px;j++)
+            {
+                imageWriter.writePixel(j,i,white);
             }
         }
     }

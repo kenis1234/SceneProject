@@ -6,16 +6,7 @@ public class Vector {
 
     /********** Constructors ***********/
     public Vector(Point3D head) {
-        try{
-            if(head.equals(new Point3D(new Coordinate(0),new Coordinate(0),new Coordinate(0))))
-                throw new RuntimeException("its a zero vector");
-            this.head = new Point3D(head);
-        }
-        catch (Exception e)
-        {
-            System.out.print(e);
-        }
-
+        this.head = new Point3D(head);
     }
     public Vector(double x, double y, double z)
     {
