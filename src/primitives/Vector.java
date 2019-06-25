@@ -76,20 +76,11 @@ public class Vector {
     }
 
     public Vector mult (double scalar){
-        try{
-            if(scalar==0)
-                throw new RuntimeException("multing in 0 is not allowed\n");
             Coordinate x=head.getCoordinate_x().scale(scalar);
             Coordinate y=head.getCoordinate_y().scale(scalar);
             Coordinate z=head.getCoordinate_z().scale(scalar);
             head=new Point3D(x,y,z);
             return this;
-        }
-        catch (RuntimeException e)
-        {
-            System.out.print(e);
-            return null;
-        }
     }
 
     public void div (double scalar){
