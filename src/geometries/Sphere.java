@@ -36,18 +36,22 @@ public class Sphere extends RadialGeometry{
     {
         List<GeoPoint> list=new ArrayList<GeoPoint>();
         Vector L = center.sub(ray.getHead());
-        double tm = L.dotProduct(ray.getDirection());
-        double d = pow(L.dotProduct(L)+tm*tm,0.5);
+        Vector V = new Vector(ray.getDirection());
+        double tm = L.dotProduct(V);
+        double d = pow(L.dotProduct(L)-tm*tm,0.5);
 
-        if(d <= this.getRadius())
+        if(d > this.getRadius())
             return list;
         double th= pow((getRadius()*getRadius()-d*d),0.5);
         double t1=tm-th;
         double t2=tm+th;
         Point3D p1= ray.getHead().add(ray.getDirection().mult(t1));
         Point3D p2= ray.getHead().add(ray.getDirection().mult(t2));
-        list.add(new GeoPoint(this,p1));
-        list.add(new GeoPoint(this,p2));
+        if(t1>0)
+            list.add(new GeoPoint(this,p1));
+        if(t2>0)
+            list.add(new GeoPoint(this,p2));
+
         return list;
     }
 }
